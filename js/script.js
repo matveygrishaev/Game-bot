@@ -19,18 +19,25 @@ const game = function () {
     let repeat = function() {
       let userNumber = prompt ('Угадай число от 1 до 100');
         if (isNumber(userNumber)) {
-          if (userNumber === randomNumber) {
+          if (Number(userNumber) === randomNumber) {
             alert('Поздравляю, Вы угадали!!!');
           } else if (userNumber > randomNumber) {
             alert('Загаданное число меньше');
-            repeat();
+            return repeat();
           } else if (userNumber < randomNumber) {
             alert('Загаданное число больше');
-            repeat();
+            return repeat();
           }
-        } else if ()
+        } else if (!isNumber(userNumber)) {
+            userNumber = confirm ('Введите число!');
+            if (userNumber === false) {
+            alert('Пока!');
+          } else {
+            return repeat();
+          }
+        }
     };
     return repeat();
 };
-
+    
 game();
